@@ -772,7 +772,7 @@ const TITLES = [];
 const cylinder = document.getElementById('cylinder');
 const N = 12;
 const angleStep = 360 / N;
-const R = 320;
+const R = window.innerWidth > 768 ? 420 : 320;
 const clips = [];
 
 for(let i=0;i<N;i++){
