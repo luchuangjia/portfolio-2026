@@ -55,7 +55,7 @@ body.page-works .footdate{color:rgba(255,255,255,0.6)}
   29.7%,79%{color:#7CB342}
   80%,100%{color:#5F7A8C}
 }
-.title-frame{position:relative;border:2.5px solid var(--ink);padding:48px 72px;transform:translateY(-30px);overflow:hidden}
+.title-frame{position:relative;border:2.5px solid var(--ink);padding:48px 72px;transform:translateY(-30px);overflow:visible}
 .title-frame::before{content:"";position:absolute;width:26px;height:26px;background:var(--accent);box-shadow:0 0 30px 12px rgba(255,60,0,0.9),0 0 60px 28px rgba(255,90,0,0.6),0 0 90px 40px rgba(255,120,0,0.3);animation:orbital 8s linear infinite,sliderGray 8s steps(1) infinite;z-index:10}
 .title-frame::after{content:'';position:absolute;left:-22px;top:50%;transform:translateY(-50%);width:22px;height:60px;background:#7CB342;border:2.5px solid var(--ink);border-right:none;border-radius:6px 0 0 6px;animation:batteryFlash 8s linear infinite}
 .side-deco-right{position:absolute;right:-14px;top:50%;transform:translateY(-50%);width:14px;height:36px;background:#7CB342;border:2.5px solid var(--ink);border-left:none;border-radius:0 6px 6px 0;animation:batteryFlash 8s linear infinite}
@@ -105,16 +105,31 @@ body.page-works .footdate{color:rgba(255,255,255,0.6)}
   0%{top:-13px;left:-13px}
   10%{top:-13px;left:calc(100% - 13px)}
   20%{top:calc(100% - 13px);left:calc(100% - 13px)}
-  30%{top:calc(100% - 13px);left:65%}
+  /* 底部向左走，走到电池黑线中间50%位置就弹回 */
+  30%{top:calc(100% - 13px);left:50%}
   40%{top:calc(100% - 13px);left:calc(100% - 13px)}
   50%{top:-13px;left:calc(100% - 13px)}
   60%{top:-13px;left:-13px}
+  /* 底部向右走，走到电池黑线中间50%位置就弹回 */
   70%{top:calc(100% - 13px);left:-13px}
-  80%{top:calc(100% - 13px);left:31%}
+  80%{top:calc(100% - 13px);left:50%}
   90%{top:calc(100% - 13px);left:-13px}
   100%{top:-13px;left:-13px}
 }
-.frame-tag{position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);background:var(--bg);padding:0 16px;font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:6px;color:var(--cool);white-space:nowrap;animation:tagFlash 8s linear infinite}
+  10%{top:-13px;left:calc(100% - 13px)}
+  20%{top:calc(100% - 13px);left:calc(100% - 13px)}
+  /* 底部向右走，碰到白块左边就弹回 */
+  30%{top:calc(100% - 13px);left:55%}
+  40%{top:calc(100% - 13px);left:calc(100% - 13px)}
+  50%{top:-13px;left:calc(100% - 13px)}
+  60%{top:-13px;left:-13px}
+  /* 底部向左走，碰到白块右边就弹回 */
+  70%{top:calc(100% - 13px);left:-13px}
+  80%{top:calc(100% - 13px);left:45%}
+  90%{top:calc(100% - 13px);left:-13px}
+  100%{top:-13px;left:-13px}
+}
+.frame-tag{position:absolute !important;bottom:-40px !important;left:50% !important;transform:translateX(-50%) !important;background:transparent !important;padding:6px 20px 2px !important;font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:6px;color:#000 !important;white-space:nowrap;z-index:20 !important;}
 @keyframes tagFlash{
   0%,29.6%,30.3%,79%,81%,100%{box-shadow:0 0 0 0 rgba(124,179,66,0);color:var(--cool)}
   29.7%,30.2%{box-shadow:0 0 20px 6px rgba(198,242,70,0.8);color:#C6F246}
@@ -151,8 +166,8 @@ body.page-works .footdate{color:rgba(255,255,255,0.6)}
 #starsCanvas{position:fixed;inset:0;z-index:0;pointer-events:none;display:none}
 body.page-works{background:linear-gradient(to bottom, #3a3a3a 0%, #4a4a4a 60%, #5a5a5a 100%)}
 body.page-works #starsCanvas{display:block}
-.cam-light{position:fixed;bottom:70px;left:50%;transform:translateX(-50%);width:1200px;height:900px;background:radial-gradient(ellipse at 50% 100%, rgba(255,250,220,0.9) 0%, rgba(255,240,180,0.4) 30%, rgba(255,240,180,0.1) 60%, rgba(255,240,180,0) 100%);clip-path:polygon(48% 100%,52% 100%,100% 0,0 0);pointer-events:none;z-index:4;display:none;animation:flicker 2.5s infinite;filter:blur(2px)}
-.cam-model{position:fixed;bottom:0;left:50%;transform:translateX(-50%);z-index:7;cursor:pointer;display:none;transition:transform .2s}
+.cam-light{position:fixed;bottom:120px;left:50%;transform:translateX(-50%) !important;width:1000px;height:700px;background:radial-gradient(ellipse at 50% 100%, rgba(255,250,220,0.9) 0%, rgba(255,240,180,0.4) 30%, rgba(255,240,180,0.1) 60%, rgba(255,240,180,0) 100%);clip-path:polygon(49% 100%,51% 100%,100% 0,0 0);pointer-events:none;z-index:4;display:none;animation:flicker 2.5s infinite;filter:blur(2px)}
+.cam-model{position:fixed;bottom:40px;left:50%;transform:translateX(-50%) !important;z-index:7;cursor:pointer;display:none;transition:transform .2s}
 .cam-model svg{width:90px;height:auto;stroke:#14171A;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .back-top{position:fixed;bottom:44px;right:52px;width:48px;height:48px;border-radius:50%;background:#EFEDE6;border:2px solid var(--ink);cursor:pointer;display:none;align-items:center;justify-content:center;z-index:200;box-shadow:3px 3px 0 rgba(198,242,70,0.6);transition:all .25s ease}
 .back-top:hover{background:var(--ink);transform:translateY(-3px);box-shadow:4px 6px 0 rgba(198,242,70,0.8)} .back-top:hover svg{stroke:#fff}
@@ -199,7 +214,7 @@ body.page-contact #inkCanvas{display:block}
 #overlay .wm{position:absolute;top:18px;left:24px;color:rgba(255,255,255,0.45);font-family:'Space Grotesk';font-size:14px;letter-spacing:3px;z-index:201}
 #loader{position:fixed;inset:0;background:#F7F7F5;z-index:9999;transition:opacity .6s ease}
 #loader.done{opacity:0;pointer-events:none}
-#loader-sun{position:fixed;top:50%;left:50%;width:120px;height:120px;transform:translate(-50%,-50%);z-index:10000;display:flex;flex-direction:column;align-items:center;transition:top 1s cubic-bezier(.22,1,.36,1), left 1s cubic-bezier(.22,1,.36,1), opacity .5s ease;pointer-events:auto;cursor:pointer}
+#loader-sun{position:fixed;top:50%;left:50%;width:120px;height:120px;transform:translate(-50%,-60%);z-index:10000;display:flex;flex-direction:column;align-items:center;transition:top 1s cubic-bezier(.22,1,.36,1), left 1s cubic-bezier(.22,1,.36,1), opacity .5s ease;pointer-events:auto;cursor:pointer}
 #loader-sun.rise{transition:transform .9s cubic-bezier(.22,1,.36,1), opacity .7s ease;transform:translate(-50%,-50%) translateY(-160px);opacity:0}
 #loader-sun.cvpos{top:118px;left:90px;transform:none;opacity:1;width:48px;height:48px}
 #load-pct{margin-top:12px;font-family:'Space Grotesk',sans-serif;font-size:23px;font-weight:400;color:#5F7A8C;letter-spacing:0;white-space:nowrap;transform:translateX(4px)}
@@ -305,6 +320,76 @@ var(--bg)}
 .contact-row .lbl{font-size:16px;color:var(--ink)}
 .contact-row .val{font-size:14px;color:var(--cool);margin-left:auto}
 
+
+/* 手机端响应式适配 */
+@media (max-width: 768px) {
+  #view-home h1 {
+    font-size: clamp(32px, 10vw, 60px);
+  }
+  .float-word {
+    font-size: 14px !important;
+  }
+  .topnav {
+    padding: 0 16px;
+    height: 52px;
+  }
+  .topnav nav {
+    gap: 16px;
+    font-size: 13px;
+  }
+  .arrow-btn {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .works-hint {
+    font-size: 12px;
+    padding: 8px 16px;
+    top: 80px;
+  }
+  .clip {
+    width: 140px !important;
+    height: 240px !important;
+  }
+  .goto-home, .goto-about {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .cam-model {
+    width: 60px !important;
+  }
+  .cam-light {
+    width: 90vw !important;
+    height: 60vh !important;
+  }
+  .title-frame::after {
+    left: -16px !important;
+    width: 16px !important;
+    height: 40px !important;
+  }
+  .side-deco-right {
+    right: -10px !important;
+    width: 10px !important;
+    height: 24px !important;
+  }
+}
+
+@keyframes slideLeft {
+  0% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-50%) translateX(8px); }
+  100% { transform: translateY(-50%) translateX(0); }
+}
+@keyframes slideRight {
+  0% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-50%) translateX(-8px); }
+  100% { transform: translateY(-50%) translateX(0); }
+}
+
+
+@media (max-width: 768px) {
+  #view-home {
+    transform: translateY(-2px);
+  }
+}
 #loader-sun svg {
   animation: sunSpin 4s linear infinite;
 }
@@ -341,6 +426,76 @@ var(--bg)}
   30% { opacity: 1; }
   100% { opacity: 0; }
 }
+
+/* 手机端响应式适配 */
+@media (max-width: 768px) {
+  #view-home h1 {
+    font-size: clamp(32px, 10vw, 60px);
+  }
+  .float-word {
+    font-size: 14px !important;
+  }
+  .topnav {
+    padding: 0 16px;
+    height: 52px;
+  }
+  .topnav nav {
+    gap: 16px;
+    font-size: 13px;
+  }
+  .arrow-btn {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .works-hint {
+    font-size: 12px;
+    padding: 8px 16px;
+    top: 80px;
+  }
+  .clip {
+    width: 140px !important;
+    height: 240px !important;
+  }
+  .goto-home, .goto-about {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .cam-model {
+    width: 60px !important;
+  }
+  .cam-light {
+    width: 90vw !important;
+    height: 60vh !important;
+  }
+  .title-frame::after {
+    left: -16px !important;
+    width: 16px !important;
+    height: 40px !important;
+  }
+  .side-deco-right {
+    right: -10px !important;
+    width: 10px !important;
+    height: 24px !important;
+  }
+}
+
+@keyframes slideLeft {
+  0% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-50%) translateX(8px); }
+  100% { transform: translateY(-50%) translateX(0); }
+}
+@keyframes slideRight {
+  0% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-50%) translateX(-8px); }
+  100% { transform: translateY(-50%) translateX(0); }
+}
+
+
+@media (max-width: 768px) {
+  #view-home {
+    transform: translateY(-2px);
+  }
+}
 #loader-sun svg {
   animation: sunSpin 4s linear infinite;
 }
@@ -370,9 +525,10 @@ var(--bg)}
     <div class="float-word fw-style2" style="left:88%;top:15%;color:#D4B5E8;animation-delay:1s">Confident</div>
     <div class="float-word fw-style2" style="left:50%;top:12%;color:#FFB7C5;animation-delay:0.3s">Self-reliance</div>
     <div class="float-word fw-style2" style="left:12%;top:45%;color:#D4B5E8;animation-delay:1.5s">Disciplined</div>
-    <div class="float-word fw-style2" style="left:85%;top:40%;color:#C6F246;animation-delay:2.5s">Healthy</div>
+    <div class="float-word fw-style2" style="left:85%;top:40%;color:#FFD580;animation-delay:2.5s">Healthy</div>
     <div class="float-word fw-style2" style="left:8%;top:75%;color:#A8D8EA;animation-delay:2s">Handsome</div>
-    <div class="float-word fw-style2" style="left:78%;top:78%;color:#FFD580;animation-delay:0.5s">Humble</div>
+    <div class="float-word fw-style2" style="left:78%;top:82%;color:#FFD580;animation-delay:0.5s">Humble</div>
+<div class="float-word fw-style2" style="left:72%;top:92%;color:#A8D8EA;animation-delay:1s">Honest</div>
     <div class="float-word fw-style2" style="left:22%;top:92%;color:#FFB7C5;animation-delay:1.7s">Friendly</div>
   </div>
   <video id="bg-video" src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" autoplay muted loop playsinline></video>
@@ -421,7 +577,7 @@ var(--bg)}
       <polyline points="0,150 150,150 220,50 290,250 360,80 430,220 500,50 570,250 640,100 710,200 780,150 1000,150" stroke="#C6F246" stroke-width="10" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
       <polyline points="0,150 150,150 220,50 290,250 360,80 430,220 500,50 570,250 640,100 710,200 780,150 1000,150" stroke="#fff" stroke-width="3" fill="none" stroke-linejoin="round" opacity="0.6"/>
     </svg>
-    <div class="frame-tag">PORTFOLIO · 2026</div>
+    <div class="frame-tag" style="position:absolute !important; bottom:-40px !important; left:50% !important; transform:translateX(-50%) !important; color:#000 !important; background:transparent !important; z-index:20 !important;">PORTFOLIO · 2026</div>
   </div>
   <div class="sub"><span class="line"></span>个 人 作 品<span class="line"></span></div>
   <div id="home-nav">
@@ -434,7 +590,7 @@ var(--bg)}
 </section>
 
 <section class="view" id="view-works">
-  <div class="works-hint">悬停预览 · 点击拖拽 · 点击放大</div>
+  <div class="works-hint">点击拖拽 · 点击放大</div>
   <div class="stage" id="stage">
     <div class="cylinder" id="cylinder"></div>
   </div>
@@ -569,8 +725,8 @@ var(--bg)}
 
 <canvas id="inkCanvas"></canvas>
 <canvas id="starsCanvas"></canvas>
-<div class="cam-light"></div>
-<div class="cam-model"><svg viewBox="0 0 100 70"><rect x="10" y="25" width="80" height="40" rx="6"/><rect x="35" y="15" width="25" height="12" rx="3"/><circle cx="50" cy="45" r="14" fill="#C6F246"/><circle cx="50" cy="45" r="7" fill="#14171A" stroke="#14171A" stroke-width="2.5"/><circle cx="50" cy="45" r="14" fill="none" stroke="#14171A" stroke-width="2.5"/><circle cx="22" cy="32" r="2" fill="#14171A"/><line x1="75" y1="32" x2="85" y2="32"/><line x1="15" y1="35" x2="25" y2="35"/><circle cx="80" cy="55" r="2" fill="#14171A"/></svg></div>
+<div class="cam-light" style="left:52% !important; transform:translateX(-50%) !important; bottom:100px !important;"></div>
+<div class="cam-model" style="left:49% !important; transform:translateX(-50%) !important; bottom:40px !important;"><svg viewBox="0 0 100 70"><rect x="10" y="25" width="80" height="40" rx="6"/><rect x="35" y="15" width="25" height="12" rx="3"/><circle cx="50" cy="45" r="14" fill="#C6F246"/><circle cx="50" cy="45" r="7" fill="#14171A" stroke="#14171A" stroke-width="2.5"/><circle cx="50" cy="45" r="14" fill="none" stroke="#14171A" stroke-width="2.5"/><circle cx="22" cy="32" r="2" fill="#14171A"/><line x1="75" y1="32" x2="85" y2="32"/><line x1="15" y1="35" x2="25" y2="35"/><circle cx="80" cy="55" r="2" fill="#14171A"/></svg></div>
 <div class="lightbox" id="lightbox"><img id="lightboxImg" src=""></div>
 <div class="doodle-layer" id="doodleLayer" style="display:none">
 <svg class="doodle d1" width="70" height="50" viewBox="0 0 70 50"><path d="M10 30 Q25 10 45 25 T65 20" stroke="#A8D8EA" stroke-width="8" stroke-linecap="round" fill="none"/></svg>
@@ -616,7 +772,7 @@ const TITLES = [];
 const cylinder = document.getElementById('cylinder');
 const N = 12;
 const angleStep = 360 / N;
-const R = 420;
+const R = 320;
 const clips = [];
 
 for(let i=0;i<N;i++){
@@ -630,12 +786,16 @@ for(let i=0;i<N;i++){
 
   const v = document.createElement('video');
   v.src = VIDS[i % VIDS.length];
+  v.poster = `videos/thumb${i+1}.jpg`;
   v.muted = true;
+  v.defaultMuted = true;
   v.loop = true;
   v.playsInline = true;
   v.setAttribute('playsinline','');
+  v.setAttribute('muted','muted');
   v.controlsList = 'nodownload noremoteplayback';
   v.draggable = false;
+  v.preload = 'auto';
 
   const t = document.createElement('div');
   t.className = 'title';
@@ -1069,6 +1229,8 @@ function typeStep(){
 setTimeout(typeStep, 500);
 
 const pctEl = document.getElementById('load-pct');
+let targetPct = 0;
+let displayPct = 0;
 let loadedCount = 0;
 const total = VIDS.length;
 let displayedPct = 0;
@@ -1079,7 +1241,7 @@ function tickPct(){
     displayedPct = Math.min(target, displayedPct + 1);
     pctEl.textContent = Math.round(displayedPct) + '%';
   }
-  // 到100%立刻进入，零延迟
+  // 到100%瞬间立刻进入，零延迟
   if(loadedCount >= total && displayedPct >= 100){
     loaderDone();
     return;
@@ -1091,7 +1253,7 @@ function onVideoReady(){
   loadedCount++;
 }
 
-// 预加载所有视频第一帧
+// 预加载所有视频，等第一帧渲染好才算完成
 VIDS.forEach(src => {
   const v = document.createElement('video');
   v.preload = 'auto';
@@ -1104,7 +1266,7 @@ VIDS.forEach(src => {
   v.onerror = onVideoReady;
 });
 
-// 兜底10秒强制进入
+// 兜底：最多等10秒，强制进入
 setTimeout(() => { loadedCount = total; }, 10000);
 tickPct();
 
