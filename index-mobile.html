@@ -898,9 +898,10 @@ function openOverlay(src){
   overlayVideo.src = src;
   overlay.classList.add('show');
   overlayVideo.muted = false;
+  overlayVideo.volume = 1;
+  // 用户主动点击触发，允许有声播放，不自动切回静音
   overlayVideo.play().catch(()=>{
-    overlayVideo.muted = true;
-    overlayVideo.play().catch(()=>{});
+    // 浏览器拦截有声播放也保持非静音状态，用户可以手动点播放按钮开声音
   });
 }
 function closeOverlay(){
